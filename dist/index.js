@@ -43,12 +43,11 @@ function EditTable(opts) {
      * Is the selection in a table
      */
     function isSelectionInTable(state) {
-        if (!state.selection.startKey) return false;
-
         var startBlock = state.startBlock;
 
-        // Only handle events in cells
+        if (!startBlock) return false;
 
+        // Only handle events in cells
         return TablePosition.isInCell(state, startBlock, opts);
     }
 
