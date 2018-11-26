@@ -179,6 +179,23 @@ var TablePosition = function (_ref) {
                 cell: cell
             });
         }
+
+        /**
+         * Check to see if current node is within a cell
+         *
+         * @param {Slate.Value} value
+         * @param {Slate.Block} startBlock
+         * @param {Object} opts
+         * @return {Boolean}
+         */
+
+    }, {
+        key: 'isInCell',
+        value: function isInCell(state, startBlock, opts) {
+            return startBlock.type === opts.typeCell || state.document.getClosest(startBlock.key, function (p) {
+                return p.type === opts.typeCell;
+            }) ? true : false;
+        }
     }]);
 
     return TablePosition;

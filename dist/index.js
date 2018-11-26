@@ -12,6 +12,7 @@ var moveSelection = require('./transforms/moveSelection');
 var moveSelectionBy = require('./transforms/moveSelectionBy');
 var setColumnAlign = require('./transforms/setColumnAlign');
 
+var TablePosition = require('./TablePosition');
 var onEnter = require('./onEnter');
 var onTab = require('./onTab');
 var onBackspace = require('./onBackspace');
@@ -48,7 +49,7 @@ function EditTable(opts) {
 
         // Only handle events in cells
 
-        return startBlock.type === opts.typeCell;
+        return TablePosition.isInCell(state, startBlock, opts);
     }
 
     /**
